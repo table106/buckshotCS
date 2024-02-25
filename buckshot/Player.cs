@@ -60,7 +60,7 @@ shoot - shotgun";
                         {
                             case "self":
                                 {
-                                    Thread.Sleep(400);
+                                    Thread.Sleep(4000);
                                     if (shotgun.content[0] == "live")
                                     {
                                         Console.WriteLine("BANG");
@@ -70,8 +70,8 @@ shoot - shotgun";
                                     {
                                         Console.WriteLine("*click");
                                         shotgun.shoot();
-                                        Thread.Sleep(200);
-                                        Utils.Clear();
+                                        Thread.Sleep(2000);
+                                        Console.Clear();
                                         if (shotgun.content.Count() != 0)
                                         {
                                             turn(shotgun);
@@ -85,7 +85,7 @@ shoot - shotgun";
                                     {
                                         Console.WriteLine($"who will you shoot?\n{string.Join(", ",opponents)}\n>");
                                         string __ans = Console.ReadLine();
-                                        Thread.Sleep(400);
+                                        Thread.Sleep(4000);
                                         if (shotgun.content[0] == "live")
                                         {
                                             Console.WriteLine("BANG");
@@ -104,7 +104,7 @@ shoot - shotgun";
                                         }
                                     } else
                                     {
-                                        Thread.Sleep(400);
+                                        Thread.Sleep(4000);
                                         if (shotgun.content[0] == "live")
                                         {
                                             Console.WriteLine("BANG");
@@ -132,19 +132,20 @@ shoot - shotgun";
                         break;
                     }
             }
-            Thread.Sleep(200);
-            Utils.Clear();
+            Thread.Sleep(2000);
+            Console.Clear();
         }
     }
     internal class Player_R2 : Player
     {
-        public List<Player_R2> opponents = new List<Player_R2>();
+        public new List<Player_R2> opponents = new List<Player_R2>();
         public List<string> inv;
         public int cuffed;
-        public Player_R2(int num, string name, int lives) : base(num,name,lives) {
+        public Player_R2(int num, string name, int lives, int wins) : base(num,name,lives) {
             this.num = num;
             this.name = name;
             this.lives = lives;
+            this.wins = wins;
             opponents = new List<Player_R2>();
             inv = new List<string>();
             cuffed = 0;
@@ -182,7 +183,7 @@ item - item";
                 inv.Add(allItems[id1]);
                 inv.Add(allItems[id2]);
                 Console.WriteLine($"{name} got {allItems[id1]} and {allItems[id2]}");
-                Thread.Sleep(200);
+                Thread.Sleep(2000);
             }
         }
         public void useItem(string item, Shotgun shotgun=null, Player_R2 target=null)
@@ -236,7 +237,7 @@ item - item";
                         {
                             case "self":
                                 {
-                                    Thread.Sleep(400);
+                                    Thread.Sleep(4000);
                                     if (shotgun.content[0] == "live")
                                     {
                                         Console.WriteLine("BANG");
@@ -247,8 +248,8 @@ item - item";
                                     {
                                         Console.WriteLine("*click");
                                         shotgun.shoot();
-                                        Thread.Sleep(200);
-                                        Utils.Clear();
+                                        Thread.Sleep(2000);
+                                        Console.Clear();
                                         if (shotgun.content.Count() != 0)
                                         {
                                             turn(shotgun);
@@ -262,7 +263,7 @@ item - item";
                                     {
                                         Console.WriteLine($"who will you shoot?\n{string.Join(", ", opponents)}\n>");
                                         string __ans = Console.ReadLine();
-                                        Thread.Sleep(400);
+                                        Thread.Sleep(4000);
                                         if (shotgun.content[0] == "live")
                                         {
                                             Console.WriteLine("BANG");
@@ -283,7 +284,7 @@ item - item";
                                     }
                                     else
                                     {
-                                        Thread.Sleep(400);
+                                        Thread.Sleep(4000);
                                         if (shotgun.content[0] == "live")
                                         {
                                             Console.WriteLine("BANG");
@@ -333,19 +334,20 @@ item - item";
                         break;
                     }
             }
-            Thread.Sleep(200);
-            Utils.Clear();
+            Thread.Sleep(2000);
+            Console.Clear();
         }
     }
     internal class Player_R3 : Player_R2
     {
-        public List<Player_R3> opponents = new List<Player_R3>();
+        public new List<Player_R3> opponents = new List<Player_R3>();
         public bool lifeLocked;
-        public Player_R3(int num, string name, int lives) : base(num,name,lives)
+        public Player_R3(int num, string name, int lives, int wins) : base(num,name,lives,wins)
         {
             this.num = num;
             this.name = name;
             this.lives = lives;
+            this.wins = wins;
             opponents = new List<Player_R3>();
             inv = new List<string>();
             cuffed = 0;
