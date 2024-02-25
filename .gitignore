@@ -97,6 +97,8 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+buckshot/obj/Debug/
+buckshot/bin/Debug/
 
 # Chutzpah Test files
 _Chutzpah*
