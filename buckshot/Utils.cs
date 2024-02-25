@@ -9,18 +9,11 @@ namespace buckshot
 {
     internal class Utils
     {
-        public void Clear()
+        public static void Clear()
         {
             Console.Clear();
         }
-        public void trySleep(int dur, bool testmode)
-        {
-            if (!testmode)
-            {
-                Thread.Sleep(dur);
-            }
-        }
-        public bool checkNames(string nameToCheck, string[] names)
+        public static bool checkNames(string nameToCheck, string[] names)
         {
             if (names.Contains(nameToCheck))
             {
@@ -28,7 +21,7 @@ namespace buckshot
             }
             return true;
         }
-        public void initOpponents(Player plr1, Player plr2, Player plr3=null)
+        public static void initOpponents(Player plr1, Player plr2, Player plr3=null)
         {
             if (plr3 != null)
             {
@@ -44,6 +37,10 @@ namespace buckshot
                 plr1.addOpponent(plr2);
                 plr2.addOpponent(plr1);
             }
+        }
+        public static string getCurrentShell(Shotgun shotgun)
+        {
+            return shotgun.content[0];
         }
     }
 }

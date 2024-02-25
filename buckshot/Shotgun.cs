@@ -34,6 +34,7 @@ namespace buckshot
         public void shoot()
         {
             content.Remove(content[0]);
+            dmg = 1;
         }
         public void empty()
         {

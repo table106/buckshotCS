@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Items.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Buckshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
