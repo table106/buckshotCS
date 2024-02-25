@@ -1,2 +1,3 @@
 # buckshotCS
-idiot attempts to rewrite buckshot roulette in C# basing on his Python version
+i did this already
+https://github.com/table106/buckshot
