@@ -1,0 +1,7 @@
+C:\Users\OSKAR\source\repos\buckshot\buckshot\bin\Debug\buckshot.exe.config
+C:\Users\OSKAR\source\repos\buckshot\buckshot\bin\Debug\buckshot.exe
+C:\Users\OSKAR\source\repos\buckshot\buckshot\bin\Debug\buckshot.pdb
+C:\Users\OSKAR\source\repos\buckshot\buckshot\obj\Debug\buckshot.csproj.AssemblyReference.cache
+C:\Users\OSKAR\source\repos\buckshot\buckshot\obj\Debug\buckshot.csproj.CoreCompileInputs.cache
+C:\Users\OSKAR\source\repos\buckshot\buckshot\obj\Debug\buckshot.exe
+C:\Users\OSKAR\source\repos\buckshot\buckshot\obj\Debug\buckshot.pdb
