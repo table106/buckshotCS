@@ -11,24 +11,34 @@ namespace buckshot
     {
         public int num;
         public string name;
-        public int lives;
-        public int wins;
+        protected int _lives;
+        public int Lives
+        {
+            get { return _lives; }
+            set { _lives = value; }
+        }
+        protected int _wins;
+        public int Wins
+        {
+            get { return _wins; }
+            set { _wins = value; }
+        }
         public int lifeCap;
         public List<Player> opponents = new List<Player>();
         public Player(int num, string name, int lives) { 
             this.num = num;
             this.name = name;
-            this.lives = lives;
-            wins = 0;
-            lifeCap = this.lives;
+            _lives = lives;
+            _wins = 0;
+            lifeCap = _lives;
             opponents = new List<Player>();
         }
         public override string ToString()
         {
-            if (lives > 1)
+            if (_lives > 1)
             {
                 return $@"{name}'s turn
-you have {lives} lives
+you have {_lives} lives
 type to use:
 shoot - shotgun";
             }
@@ -43,12 +53,12 @@ shoot - shotgun";
         }
         public void takeDmg(int dmg=1)
         {
-            lives -= dmg;
+            _lives -= dmg;
         }
         public virtual void turn(Shotgun shotgun)
         {
             Console.WriteLine(this);
-            Console.WriteLine("type to use:\nshoot - shotgun\n>"); // you finished here!
+            Console.WriteLine("type to use:\nshoot - shotgun\n>");
             string ans = Console.ReadLine();
             switch (ans)
             {
@@ -139,38 +149,48 @@ shoot - shotgun";
     internal class Player_R2 : Player
     {
         public new List<Player_R2> opponents = new List<Player_R2>();
-        public List<string> inv;
-        public int cuffed;
+        protected List<string> _inv;
+        public List<string> Inv
+        {
+            get { return _inv; }
+            set { _inv = value; }
+        }
+        protected int cuffed;
+        public int Cuffed
+        {
+            get { return cuffed; }
+            set { cuffed = value; }
+        }
         public Player_R2(int num, string name, int lives, int wins) : base(num,name,lives) {
             this.num = num;
             this.name = name;
-            this.lives = lives;
-            this.wins = wins;
+            _lives = lives;
+            this._wins = wins;
             opponents = new List<Player_R2>();
-            inv = new List<string>();
+            _inv = new List<string>();
             cuffed = 0;
         }
         public override string ToString()
         {
-            if (lives > 1)
+            if (_lives > 1)
             {
                 return $@"{name}'s turn
-you have {lives} lives
-your items: {inv}
+you have {_lives} lives
+your items: {_inv}
 type to use:
 shoot - shotgun
 item - item";
             }
             return $@"{name}'s turn
 you have 1 life
-your items: {inv}
+your items: {_inv}
 type to use:
 shoot - shotgun
 item - item";
         }
         public void heal()
         {
-            lives += 1;
+            _lives += 1;
         }
         public void getItem(int much)
         {
@@ -180,8 +200,8 @@ item - item";
             {
                 int id1 = rnd.Next(0,4);
                 int id2 = rnd.Next(0,4);
-                inv.Add(allItems[id1]);
-                inv.Add(allItems[id2]);
+                _inv.Add(allItems[id1]);
+                _inv.Add(allItems[id2]);
                 Console.WriteLine($"{name} got {allItems[id1]} and {allItems[id2]}");
                 Thread.Sleep(2000);
             }
@@ -309,7 +329,7 @@ item - item";
                     }
                 case "item":
                     {
-                        Console.WriteLine($"pick an item\n{string.Join(", ",inv)}\n>");
+                        Console.WriteLine($"pick an item\n{string.Join(", ",_inv)}\n>");
                         string _ans = Console.ReadLine();
                         if (_ans == "cuffs" && opponents.Count() > 1)
                         {
@@ -346,20 +366,20 @@ item - item";
         {
             this.num = num;
             this.name = name;
-            this.lives = lives;
-            this.wins = wins;
+            _lives = lives;
+            _wins = wins;
             opponents = new List<Player_R3>();
-            inv = new List<string>();
+            _inv = new List<string>();
             cuffed = 0;
             lifeLocked = false;
         }
         public override string ToString()
         {
-            if (lives > 2)
+            if (_lives > 2)
             {
                 return $@"{name}'s turn
-you have {lives} lives
-your items: {inv}
+you have {_lives} lives
+your items: {_inv}
 type to use:
 shoot - shotgun
 item - item";
@@ -367,7 +387,7 @@ item - item";
             lifeLocked = true;
             return $@"{name}'s turn
 you have # lives
-your items: {inv}
+your items: {_inv}
 type to use:
 shoot - shotgun
 item - item";

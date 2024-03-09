@@ -26,7 +26,8 @@ namespace buckshot
             Console.WriteLine("=======================");
             Console.WriteLine("version c0.1-beta");
             Console.WriteLine(@"press enter to start
-or type 'how' for instructions");
+or type 'how' for instructions
+>");
             Shotgun shotgun = new Shotgun();
             string ans = Console.ReadLine();
             Console.Beep();
@@ -177,9 +178,9 @@ you cuff your enemy skipping their next turn");
                 Console.WriteLine("all of you can now have items. (max 8)");
                 Thread.Sleep(3000);
 
-                Player_R2 _player1 = new Player_R2(1, player1.name, 4, player1.wins);
-                Player_R2 _player2 = new Player_R2(2, player2.name, 4, player2.wins);
-                Player_R2 _player3 = new Player_R2(3, player3.name, 4, player3.wins);
+                Player_R2 _player1 = new Player_R2(1, player1.name, 4, player1.Wins);
+                Player_R2 _player2 = new Player_R2(2, player2.name, 4, player2.Wins);
+                Player_R2 _player3 = new Player_R2(3, player3.name, 4, player3.Wins);
                 Utils.initOpponents(player1, player2, player3);
                 Player_R2[] _plrs = { _player1, _player2, _player3 };
                 shotgun.empty();
@@ -196,9 +197,9 @@ you cuff your enemy skipping their next turn");
                 Console.WriteLine("now, when you reach less than 3 lives, your defibrillator will be cut.\nthe life display will glitch when that happens");
                 Thread.Sleep(4000);
 
-                Player_R3 __player1 = new Player_R3(1, player1.name, 6, _player1.wins);
-                Player_R3 __player2 = new Player_R3(2, player2.name, 6, _player2.wins);
-                Player_R3 __player3 = new Player_R3(3, player3.name, 6, _player3.wins);
+                Player_R3 __player1 = new Player_R3(1, player1.name, 6, _player1.Wins);
+                Player_R3 __player2 = new Player_R3(2, player2.name, 6, _player2.Wins);
+                Player_R3 __player3 = new Player_R3(3, player3.name, 6, _player3.Wins);
                 Utils.initOpponents(__player1, __player2, __player3);
                 Player_R3[] __plrs = { __player1, __player2, __player3 };
                 shotgun.empty();
@@ -231,8 +232,8 @@ you cuff your enemy skipping their next turn");
                 Rounds.round1(shotgun, false, plrs);
 
                 shotgun.empty();
-                Player_R2 _player1 = new Player_R2(1, player1.name, 4, player1.wins);
-                Player_R2 _player2 = new Player_R2(2, player2.name, 4, player2.wins);
+                Player_R2 _player1 = new Player_R2(1, player1.name, 4, player1.Wins);
+                Player_R2 _player2 = new Player_R2(2, player2.name, 4, player2.Wins);
 
                 Utils.initOpponents(_player1, _player2);
                 Player_R2[] _plrs = { _player1, _player2 };
@@ -246,8 +247,8 @@ you cuff your enemy skipping their next turn");
                 Thread.Sleep(4000);
 
                 shotgun.empty();
-                Player_R3 __player1 = new Player_R3(1, player1.name, 6, _player1.wins);
-                Player_R3 __player2 = new Player_R3(2, player2.name, 6, _player2.wins);
+                Player_R3 __player1 = new Player_R3(1, player1.name, 6, _player1.Wins);
+                Player_R3 __player2 = new Player_R3(2, player2.name, 6, _player2.Wins);
 
                 Utils.initOpponents(__player1, __player2);
                 Player_R3[] __plrs = { __player1, __player2 };
@@ -255,13 +256,13 @@ you cuff your enemy skipping their next turn");
                 Rounds.round3(shotgun, false, __plrs);
 
                 Console.Clear();
-                if (__player1.wins > __player2.wins)
+                if (__player1.Wins > __player2.Wins)
                 {
-                    Console.WriteLine($"{__player1.name} wins with a score of {__player1.wins} to {__player2.wins}");
+                    Console.WriteLine($"{__player1.name} wins with a score of {__player1.Wins} to {__player2.Wins}");
                 }
-                else if (__player2.wins > __player1.wins)
+                else if (__player2.Wins > __player1.Wins)
                 {
-                    Console.WriteLine($"{__player2.name} wins with a score of {__player2.wins} to {__player1.wins}");
+                    Console.WriteLine($"{__player2.name} wins with a score of {__player2.Wins} to {__player1.Wins}");
                 }
                 Thread.Sleep(5000);
             }
