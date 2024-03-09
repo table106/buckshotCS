@@ -9,7 +9,7 @@ namespace buckshot
 {
     internal class Buckshot
     {
-        public string input(string input)
+        public string Input(string input)
         {
             Console.WriteLine(input);
             string val = Console.ReadLine();
@@ -77,7 +77,7 @@ you cuff your enemy skipping their next turn");
                         Player plr2 = new Player(2, "plr2", 2);
                         Utils.initOpponents(plr1, plr2);
                         Player[] plrs = { plr1, plr2 };
-                        Rounds.round1(shotgun, true, plrs);
+                        Rounds.Round1(shotgun, true, plrs);
                     }
                     else if (_ans == "2")
                     {
@@ -113,7 +113,7 @@ you cuff your enemy skipping their next turn");
                                 Player plr3 = new Player(3, "plr3", 2);
                                 Utils.initOpponents(plr1, plr2, plr3);
                                 Player[] plrs = { plr1, plr2, plr3 };
-                                Rounds.round1(shotgun, true, plrs);
+                                Rounds.Round1(shotgun, true, plrs);
                             }
                             else if (__ans == "2")
                             {
@@ -173,7 +173,7 @@ you cuff your enemy skipping their next turn");
                 Console.WriteLine("good luck.");
                 Thread.Sleep(3000);
 
-                Rounds.round1(shotgun, false, plrs);
+                Rounds.Round1(shotgun, false, plrs);
 
                 Console.WriteLine("all of you can now have items. (max 8)");
                 Thread.Sleep(3000);
@@ -185,9 +185,9 @@ you cuff your enemy skipping their next turn");
                 Player_R2[] _plrs = { _player1, _player2, _player3 };
                 shotgun.empty();
 
-                _player1.getItem(1);
-                _player2.getItem(1);
-                _player3.getItem(1);
+                _player1.GetItem(1);
+                _player2.GetItem(1);
+                _player3.GetItem(1);
 
                 Rounds.round2(shotgun, false, _plrs);
 
@@ -204,9 +204,9 @@ you cuff your enemy skipping their next turn");
                 Player_R3[] __plrs = { __player1, __player2, __player3 };
                 shotgun.empty();
 
-                __player1.getItem(2);
-                __player2.getItem(2);
-                __player3.getItem(2);
+                __player1.GetItem(2);
+                __player2.GetItem(2);
+                __player3.GetItem(2);
 
                 Rounds.round3(shotgun, false, __plrs);
 
@@ -229,7 +229,7 @@ you cuff your enemy skipping their next turn");
                 Console.WriteLine("good luck.");
                 Thread.Sleep(2000);
 
-                Rounds.round1(shotgun, false, plrs);
+                Rounds.Round1(shotgun, false, plrs);
 
                 shotgun.empty();
                 Player_R2 _player1 = new Player_R2(1, player1.name, 4, player1.Wins);

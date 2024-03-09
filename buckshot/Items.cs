@@ -32,7 +32,7 @@ namespace buckshot
                 Console.WriteLine("you already have max lives. (item consumed)");
             } else
             {
-                p.heal();
+                p.Heal();
             }
             p.Inv.Remove("cigarette");
         }

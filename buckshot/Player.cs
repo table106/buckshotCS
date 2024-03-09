@@ -47,7 +47,7 @@ you have 1 life
 type to use:
 shoot - shotgun";
         }
-        public void addOpponent(Player p)
+        public void AddOpponent(Player p)
         {
             opponents.Add(p);
         }
@@ -188,11 +188,11 @@ type to use:
 shoot - shotgun
 item - item";
         }
-        public void heal()
+        public void Heal()
         {
             _lives += 1;
         }
-        public void getItem(int much)
+        public void GetItem(int much)
         {
             string[] allItems = {"beer","knife","magnifying glass","cigarette","cuffs"};
             Random rnd = new Random();

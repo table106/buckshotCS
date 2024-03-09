@@ -9,7 +9,7 @@ namespace buckshot
 {
     internal class Rounds
     {
-        public static void round1(Shotgun shotgun, bool testmode, Player[] players)
+        public static void Round1(Shotgun shotgun, bool testmode, Player[] players)
         {
             Player player1 = players[0];
             Player player2 = players[1];
@@ -29,6 +29,11 @@ namespace buckshot
                     while (player1.Lives > 0 && player2.Lives > 0 && player3.Lives > 0 && shotgun.content.Count != 0)
                     {
                         Console.Clear();
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name         | lives"); // you finished
+                            Console.WriteLine($" 1: {player1.name} | {player1.Lives}"); // here!!
+                        }
                         player1.turn(shotgun);
                         Console.Clear();
                         if (player1.Lives == 0 || player2.Lives == 0 || player3.Lives == 0)
