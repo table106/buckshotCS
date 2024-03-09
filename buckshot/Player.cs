@@ -212,27 +212,27 @@ item - item";
             {
                 case "beer":
                     {
-                        Items.useBeer(this, shotgun);
+                        Items.UseBeer(this, shotgun);
                         break;
                     }
                 case "knife":
                     {
-                        Items.useKnife(this, shotgun);
+                        Items.UseKnife(this, shotgun);
                         break;
                     }
                 case "magnifying glass":
                     {
-                        Items.useGlass(this, shotgun);
+                        Items.UseGlass(this, shotgun);
                         break;
                     }
                 case "cigarette":
                     {
-                        Items.useCig(this);
+                        Items.UseCig(this);
                         break;
                     }
                 case "cuffs":
                     {
-                        Items.useCuffs(this, target);
+                        Items.UseCuffs(this, target);
                         break;
                     }
                 default:

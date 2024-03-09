@@ -8,24 +8,24 @@ namespace buckshot
 {
     internal class Items
     {
-        public static void useBeer(Player_R2 p, Shotgun shotgun)
+        public static void UseBeer(Player_R2 p, Shotgun shotgun)
         {
             Console.WriteLine($"you unloaded a {Utils.getCurrentShell(shotgun)} shell");
             shotgun.shoot();
             p.Inv.Remove("beer");
         }
-        public static void useKnife(Player_R2 p, Shotgun shotgun)
+        public static void UseKnife(Player_R2 p, Shotgun shotgun)
         {
             Console.WriteLine("the next shot will deal 2 damage");
             shotgun.dmg = 2;
             p.Inv.Remove("knife");
         }
-        public static void useGlass(Player_R2 p, Shotgun shotgun)
+        public static void UseGlass(Player_R2 p, Shotgun shotgun)
         {
             Console.WriteLine($"the shell in the chamber is {Utils.getCurrentShell(shotgun)}");
             p.Inv.Remove("magnifying glass");
         }
-        public static void useCig(Player_R2 p)
+        public static void UseCig(Player_R2 p)
         {
             if (p.Lives == p.lifeCap)
             {
@@ -36,7 +36,7 @@ namespace buckshot
             }
             p.Inv.Remove("cigarette");
         }
-        public static void useCuffs(Player_R2 user, Player_R2 target)
+        public static void UseCuffs(Player_R2 user, Player_R2 target)
         {
             if (target.Cuffed > 0)
             {
