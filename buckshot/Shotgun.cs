@@ -18,7 +18,7 @@ namespace buckshot
         {
             return string.Join(", ", content);
         }
-        public void insertShells(int lives, int blanks)
+        public void InsertShells(int lives, int blanks)
         {
             for (int i = 0; i <= lives; i++)
             {
@@ -31,12 +31,12 @@ namespace buckshot
             Random rnd = new Random();
             content = content.OrderBy(x=> rnd.Next()).ToList();
         }
-        public void shoot()
+        public void Shoot()
         {
             content.Remove(content[0]);
             dmg = 1;
         }
-        public void empty()
+        public void Empty()
         {
             content.Clear();
         }

@@ -9,7 +9,7 @@ namespace buckshot
 {
     internal class Utils
     {
-        public static bool checkNames(string nameToCheck, string[] names)
+        public static bool CheckNames(string nameToCheck, string[] names)
         {
             if (names.Contains(nameToCheck))
             {
@@ -17,7 +17,7 @@ namespace buckshot
             }
             return true;
         }
-        public static void initOpponents(Player plr1, Player plr2, Player plr3=null)
+        public static void InitOpponents(Player plr1, Player plr2, Player plr3=null)
         {
             if (plr3 != null)
             {
@@ -34,7 +34,7 @@ namespace buckshot
                 plr2.AddOpponent(plr1);
             }
         }
-        public static void initOpponents(Player_R2 plr1, Player_R2 plr2, Player_R3 plr3=null)
+        public static void InitOpponents(Player_R2 plr1, Player_R2 plr2, Player_R2 plr3=null)
         {
             if (plr3 != null)
             {
@@ -51,7 +51,7 @@ namespace buckshot
                 plr2.AddOpponent(plr1);
             }
         }
-        public static void initOpponents(Player_R3 plr1, Player_R3 plr2, Player_R3 plr3=null)
+        public static void InitOpponents(Player_R3 plr1, Player_R3 plr2, Player_R3 plr3=null)
         {
             if (plr3 != null)
             {
@@ -68,7 +68,7 @@ namespace buckshot
                 plr2.AddOpponent(plr1);
             }
         }
-        public static string getCurrentShell(Shotgun shotgun)
+        public static string GetCurrentShell(Shotgun shotgun)
         {
             return shotgun.content[0];
         }

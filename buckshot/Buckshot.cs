@@ -72,30 +72,30 @@ you cuff your enemy skipping their next turn");
                     _ans = Console.ReadLine();
                     if (_ans == "1")
                     {
-                        shotgun.empty();
+                        shotgun.Empty();
                         Player plr1 = new Player(1, "plr1", 2);
                         Player plr2 = new Player(2, "plr2", 2);
-                        Utils.initOpponents(plr1, plr2);
+                        Utils.InitOpponents(plr1, plr2);
                         Player[] plrs = { plr1, plr2 };
                         Rounds.Round1(shotgun, true, plrs);
                     }
                     else if (_ans == "2")
                     {
-                        shotgun.empty();
+                        shotgun.Empty();
                         Player_R2 plr1 = new Player_R2(1, "plr1", 4, 0);
                         Player_R2 plr2 = new Player_R2(2, "plr2", 4, 0);
-                        Utils.initOpponents(plr1, plr2);
+                        Utils.InitOpponents(plr1, plr2);
                         Player_R2[] plrs = { plr1, plr2 };
-                        Rounds.round2(shotgun, true, plrs);
+                        Rounds.Round2(shotgun, true, plrs);
                     }
                     else if (_ans == "3")
                     {
-                        shotgun.empty();
+                        shotgun.Empty();
                         Player_R3 plr1 = new Player_R3(1, "plr1", 6, 0);
                         Player_R3 plr2 = new Player_R3(2, "plr2", 6, 0);
-                        Utils.initOpponents(plr1, plr2);
+                        Utils.InitOpponents(plr1, plr2);
                         Player_R3[] plrs = { plr1, plr2 };
-                        Rounds.round3(shotgun, true, plrs);
+                        Rounds.Round3(shotgun, true, plrs);
                     }
                     else if (_ans == "3P")
                     {
@@ -107,32 +107,32 @@ you cuff your enemy skipping their next turn");
                             __ans = Console.ReadLine();
                             if (__ans == "1")
                             {
-                                shotgun.empty();
+                                shotgun.Empty();
                                 Player plr1 = new Player(1, "plr1", 2);
                                 Player plr2 = new Player(2, "plr2", 2);
                                 Player plr3 = new Player(3, "plr3", 2);
-                                Utils.initOpponents(plr1, plr2, plr3);
+                                Utils.InitOpponents(plr1, plr2, plr3);
                                 Player[] plrs = { plr1, plr2, plr3 };
                                 Rounds.Round1(shotgun, true, plrs);
                             }
                             else if (__ans == "2")
                             {
-                                shotgun.empty();
+                                shotgun.Empty();
                                 Player_R2 plr1 = new Player_R2(1, "plr1", 4, 0);
                                 Player_R2 plr2 = new Player_R2(2, "plr2", 4, 0);
                                 Player_R2 plr3 = new Player_R2(3, "plr3", 4, 0);
-                                Utils.initOpponents(plr1, plr2, plr3);
+                                Utils.InitOpponents(plr1, plr2, (Player)plr3);
                                 Player_R2[] plrs = { plr1, plr2, plr3 };
-                                Rounds.round2(shotgun, true, plrs);
+                                Rounds.Round2(shotgun, true, plrs);
                             }
                             else if (__ans == "3")
                             {
                                 Player_R3 plr1 = new Player_R3(1, "plr1", 6, 0);
                                 Player_R3 plr2 = new Player_R3(2, "plr2", 6, 0);
                                 Player_R3 plr3 = new Player_R3(3, "plr3", 6, 0);
-                                Utils.initOpponents(plr1, plr2, plr3);
+                                Utils.InitOpponents(plr1, plr2, plr3);
                                 Player_R3[] plrs = { plr1, plr2, plr3 };
-                                Rounds.round3(shotgun, true, plrs);
+                                Rounds.Round3(shotgun, true, plrs);
                             }
                         } while (_keys.Contains(__ans));
                         break;
@@ -151,7 +151,7 @@ you cuff your enemy skipping their next turn");
                 Player player2 = new Player(2, Console.ReadLine(), 2);
 
                 string[] names = { player1.name };
-                while (!Utils.checkNames(player2.name, names))
+                while (!Utils.CheckNames(player2.name, names))
                 {
                     Console.WriteLine("pick another name.\n>");
                     player2 = new Player(2, Console.ReadLine(), 2);
@@ -161,13 +161,13 @@ you cuff your enemy skipping their next turn");
                 Player player3 = new Player(3, Console.ReadLine(), 2);
 
                 string[] _names = { player1.name, player2.name };
-                while (!Utils.checkNames(player3.name, _names))
+                while (!Utils.CheckNames(player3.name, _names))
                 {
                     Console.WriteLine("pick another name.\n>");
                     player3 = new Player(3, Console.ReadLine(), 2);
                 }
 
-                Utils.initOpponents(player1, player2, player3);
+                Utils.InitOpponents(player1, player2, player3);
                 Player[] plrs = { player1, player2, player3 };
 
                 Console.WriteLine("good luck.");
@@ -181,15 +181,15 @@ you cuff your enemy skipping their next turn");
                 Player_R2 _player1 = new Player_R2(1, player1.name, 4, player1.Wins);
                 Player_R2 _player2 = new Player_R2(2, player2.name, 4, player2.Wins);
                 Player_R2 _player3 = new Player_R2(3, player3.name, 4, player3.Wins);
-                Utils.initOpponents(player1, player2, player3);
+                Utils.InitOpponents(player1, player2, player3);
                 Player_R2[] _plrs = { _player1, _player2, _player3 };
-                shotgun.empty();
+                shotgun.Empty();
 
                 _player1.GetItem(1);
                 _player2.GetItem(1);
                 _player3.GetItem(1);
 
-                Rounds.round2(shotgun, false, _plrs);
+                Rounds.Round2(shotgun, false, _plrs);
 
                 Console.Clear();
                 Console.WriteLine("let's make this a little bit more interesting.");
@@ -200,15 +200,15 @@ you cuff your enemy skipping their next turn");
                 Player_R3 __player1 = new Player_R3(1, player1.name, 6, _player1.Wins);
                 Player_R3 __player2 = new Player_R3(2, player2.name, 6, _player2.Wins);
                 Player_R3 __player3 = new Player_R3(3, player3.name, 6, _player3.Wins);
-                Utils.initOpponents(__player1, __player2, __player3);
+                Utils.InitOpponents(__player1, __player2, __player3);
                 Player_R3[] __plrs = { __player1, __player2, __player3 };
-                shotgun.empty();
+                shotgun.Empty();
 
                 __player1.GetItem(2);
                 __player2.GetItem(2);
                 __player3.GetItem(2);
 
-                Rounds.round3(shotgun, false, __plrs);
+                Rounds.Round3(shotgun, false, __plrs);
 
                 Console.Clear();
                 Console.WriteLine("you finished the game!\nexiting in 5 seconds");
@@ -223,7 +223,7 @@ you cuff your enemy skipping their next turn");
                 Console.WriteLine("what about player 2?\n>");
                 Player player2 = new Player(2, Console.ReadLine(), 2);
 
-                Utils.initOpponents(player1, player2);
+                Utils.InitOpponents(player1, player2);
                 Player[] plrs = { player1, player2 };
 
                 Console.WriteLine("good luck.");
@@ -231,14 +231,14 @@ you cuff your enemy skipping their next turn");
 
                 Rounds.Round1(shotgun, false, plrs);
 
-                shotgun.empty();
+                shotgun.Empty();
                 Player_R2 _player1 = new Player_R2(1, player1.name, 4, player1.Wins);
                 Player_R2 _player2 = new Player_R2(2, player2.name, 4, player2.Wins);
 
-                Utils.initOpponents(_player1, _player2);
+                Utils.InitOpponents(_player1, _player2);
                 Player_R2[] _plrs = { _player1, _player2 };
 
-                Rounds.round2(shotgun, false, _plrs);
+                Rounds.Round2(shotgun, false, _plrs);
 
                 Console.Clear();
                 Console.WriteLine("let's make this a little bit more interesting.");
@@ -246,14 +246,14 @@ you cuff your enemy skipping their next turn");
                 Console.WriteLine("now, when you reach less than 3 lives, your defibrillator will be cut.\nthe life display will glitch when that happens");
                 Thread.Sleep(4000);
 
-                shotgun.empty();
+                shotgun.Empty();
                 Player_R3 __player1 = new Player_R3(1, player1.name, 6, _player1.Wins);
                 Player_R3 __player2 = new Player_R3(2, player2.name, 6, _player2.Wins);
 
-                Utils.initOpponents(__player1, __player2);
+                Utils.InitOpponents(__player1, __player2);
                 Player_R3[] __plrs = { __player1, __player2 };
 
-                Rounds.round3(shotgun, false, __plrs);
+                Rounds.Round3(shotgun, false, __plrs);
 
                 Console.Clear();
                 if (__player1.Wins > __player2.Wins)

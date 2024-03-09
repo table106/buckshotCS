@@ -21,7 +21,7 @@ namespace buckshot
                 {
                     int lives = rnd.Next(1, 5);
                     int blanks = rnd.Next(1, 5);
-                    shotgun.insertShells(lives, blanks);
+                    shotgun.InsertShells(lives, blanks);
                     Console.Clear();
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
@@ -31,22 +31,41 @@ namespace buckshot
                         Console.Clear();
                         if (testmode)
                         {
-                            Console.WriteLine("num | name         | lives"); // you finished
-                            Console.WriteLine($" 1: {player1.name} | {player1.Lives}"); // here!!
+                            Console.WriteLine("num | name | lives | wins");
+                            foreach (Player plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins}");
+                            }
                         }
-                        player1.turn(shotgun);
+                        player1.Turn(shotgun);
                         Console.Clear();
                         if (player1.Lives == 0 || player2.Lives == 0 || player3.Lives == 0)
                         {
                             break;
                         }
-                        player2.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins");
+                            foreach (Player plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins}");
+                            }
+                        }
+                        player2.Turn(shotgun);
                         Console.Clear();
                         if (player1.Lives == 0 || player2.Lives == 0 || player3.Lives == 0)
                         {
                             break;
                         }
-                        player3.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins");
+                            foreach (Player plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins}");
+                            }
+                        }
+                        player3.Turn(shotgun);
                         Console.Clear();
                     }
                 }
@@ -72,7 +91,7 @@ namespace buckshot
                 {
                     int lives = rnd.Next(1, 5);
                     int blanks = rnd.Next(1, 5);
-                    shotgun.insertShells(lives, blanks);
+                    shotgun.InsertShells(lives, blanks);
                     Console.Clear();
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
@@ -80,13 +99,29 @@ namespace buckshot
                     while (player1.Lives > 0 && player2.Lives > 0 && shotgun.content.Count != 0)
                     {
                         Console.Clear();
-                        player1.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins");
+                            foreach (Player plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins}");
+                            }
+                        }
+                        player1.Turn(shotgun);
                         Console.Clear();
                         if (player1.Lives == 0 || player2.Lives == 0)
                         {
                             break;
                         }
-                        player2.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins");
+                            foreach (Player plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins}");
+                            }
+                        }
+                        player2.Turn(shotgun);
                         Console.Clear();
                     }
                 }
@@ -102,7 +137,7 @@ namespace buckshot
             }
             Thread.Sleep(5000);
         }
-        public static void round2(Shotgun shotgun, bool testmode, Player_R2[] players) {
+        public static void Round2(Shotgun shotgun, bool testmode, Player_R2[] players) {
             Player_R2 player1 = players[0];
             Player_R2 player2 = players[1];
             Random rnd = new Random();
@@ -113,7 +148,7 @@ namespace buckshot
                 {
                     int lives = rnd.Next(1, 5);
                     int blanks = rnd.Next(1, 5);
-                    shotgun.insertShells(lives, blanks);
+                    shotgun.InsertShells(lives, blanks);
                     Console.Clear();
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
@@ -121,19 +156,43 @@ namespace buckshot
                     while (player1.Lives > 0 && player2.Lives > 0 && player3.Lives > 0 && shotgun.content.Count != 0)
                     {
                         Console.Clear();
-                        player1.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
+                            foreach (Player_R2 plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed}");
+                            }
+                        }
+                        player1.Turn(shotgun);
                         Console.Clear();
                         if (player1.Lives == 0 || player2.Lives == 0 || player3.Lives == 0)
                         {
                             break;
                         }
-                        player2.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
+                            foreach (Player_R2 plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed}");
+                            }
+                        }
+                        player2.Turn(shotgun);
                         Console.Clear();
                         if (player1.Lives == 0 || player2.Lives == 0 || player3.Lives == 0)
                         {
                             break;
                         }
-                        player3.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
+                            foreach (Player_R2 plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed}");
+                            }
+                        }
+                        player3.Turn(shotgun);
                         Console.Clear();
                     }
                 }
@@ -162,7 +221,7 @@ namespace buckshot
                 {
                     int lives = rnd.Next(1, 5);
                     int blanks = rnd.Next(1, 5);
-                    shotgun.insertShells(lives, blanks);
+                    shotgun.InsertShells(lives, blanks);
                     Console.Clear();
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
@@ -170,13 +229,29 @@ namespace buckshot
                     while (player1.Lives > 0 && player2.Lives > 0 && shotgun.content.Count != 0)
                     {
                         Console.Clear();
-                        player1.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
+                            foreach (Player_R2 plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed}");
+                            }
+                        }
+                        player1.Turn(shotgun);
                         Console.Clear();
                         if (player1.Lives == 0 || player2.Lives == 0)
                         {
                             break;
                         }
-                        player2.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
+                            foreach (Player_R2 plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed}");
+                            }
+                        }
+                        player2.Turn(shotgun);
                         Console.Clear();
                     }
                 }
@@ -193,7 +268,7 @@ namespace buckshot
             }
             Thread.Sleep(5000);
         }
-        public static void round3(Shotgun shotgun, bool testmode, Player_R3[] players)
+        public static void Round3(Shotgun shotgun, bool testmode, Player_R3[] players)
         {
             Player_R3 player1 = players[0];
             Player_R3 player2 = players[1];
@@ -205,7 +280,7 @@ namespace buckshot
                 {
                     int lives = rnd.Next(1, 5);
                     int blanks = rnd.Next(1, 5);
-                    shotgun.insertShells(lives, blanks);
+                    shotgun.InsertShells(lives, blanks);
                     Console.Clear();
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
@@ -213,19 +288,43 @@ namespace buckshot
                     while (player1.Lives > 0 && player2.Lives > 0 && player3.Lives > 0 && shotgun.content.Count != 0)
                     {
                         Console.Clear();
-                        player1.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
+                            foreach (Player_R3 plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed} | {plr.lifeLocked}");
+                            }
+                        }
+                        player1.Turn(shotgun);
                         Console.Clear();
                         if (player1.Lives == 0 || player2.Lives == 0 || player3.Lives == 0)
                         {
                             break;
                         }
-                        player2.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
+                            foreach (Player_R3 plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed} | {plr.lifeLocked}");
+                            }
+                        }
+                        player2.Turn(shotgun);
                         Console.Clear();
                         if (player1.Lives == 0 || player2.Lives == 0 || player3.Lives == 0)
                         {
                             break;
                         }
-                        player3.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
+                            foreach (Player_R3 plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed} | {plr.lifeLocked}");
+                            }
+                        }
+                        player3.Turn(shotgun);
                         Console.Clear();
                     }
                 }
@@ -254,7 +353,7 @@ namespace buckshot
                 {
                     int lives = rnd.Next(1, 5);
                     int blanks = rnd.Next(1, 5);
-                    shotgun.insertShells(lives, blanks);
+                    shotgun.InsertShells(lives, blanks);
                     Console.Clear();
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
@@ -262,13 +361,29 @@ namespace buckshot
                     while (player1.Lives > 0 && player2.Lives > 0 && shotgun.content.Count != 0)
                     {
                         Console.Clear();
-                        player1.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
+                            foreach (Player_R3 plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed} | {plr.lifeLocked}");
+                            }
+                        }
+                        player1.Turn(shotgun);
                         Console.Clear();
                         if (player1.Lives == 0 || player2.Lives == 0)
                         {
                             break;
                         }
-                        player2.turn(shotgun);
+                        if (testmode)
+                        {
+                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
+                            foreach (Player_R3 plr in players)
+                            {
+                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed} | {plr.lifeLocked}");
+                            }
+                        }
+                        player2.Turn(shotgun);
                         Console.Clear();
                     }
                 }

@@ -10,8 +10,8 @@ namespace buckshot
     {
         public static void UseBeer(Player_R2 p, Shotgun shotgun)
         {
-            Console.WriteLine($"you unloaded a {Utils.getCurrentShell(shotgun)} shell");
-            shotgun.shoot();
+            Console.WriteLine($"you unloaded a {Utils.GetCurrentShell(shotgun)} shell");
+            shotgun.Shoot();
             p.Inv.Remove("beer");
         }
         public static void UseKnife(Player_R2 p, Shotgun shotgun)
@@ -22,7 +22,7 @@ namespace buckshot
         }
         public static void UseGlass(Player_R2 p, Shotgun shotgun)
         {
-            Console.WriteLine($"the shell in the chamber is {Utils.getCurrentShell(shotgun)}");
+            Console.WriteLine($"the shell in the chamber is {Utils.GetCurrentShell(shotgun)}");
             p.Inv.Remove("magnifying glass");
         }
         public static void UseCig(Player_R2 p)

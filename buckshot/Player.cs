@@ -51,11 +51,11 @@ shoot - shotgun";
         {
             opponents.Add(p);
         }
-        public void takeDmg(int dmg=1)
+        public void TakeDmg(int dmg=1)
         {
             _lives -= dmg;
         }
-        public virtual void turn(Shotgun shotgun)
+        public virtual void Turn(Shotgun shotgun)
         {
             Console.WriteLine(this);
             Console.WriteLine("type to use:\nshoot - shotgun\n>");
@@ -74,17 +74,17 @@ shoot - shotgun";
                                     if (shotgun.content[0] == "live")
                                     {
                                         Console.WriteLine("BANG");
-                                        shotgun.shoot();
-                                        takeDmg(1);
+                                        shotgun.Shoot();
+                                        TakeDmg(1);
                                     } else if (shotgun.content[0] == "blank")
                                     {
                                         Console.WriteLine("*click");
-                                        shotgun.shoot();
+                                        shotgun.Shoot();
                                         Thread.Sleep(2000);
                                         Console.Clear();
                                         if (shotgun.content.Count() != 0)
                                         {
-                                            turn(shotgun);
+                                            Turn(shotgun);
                                         }
                                     }
                                     break;
@@ -99,18 +99,18 @@ shoot - shotgun";
                                         if (shotgun.content[0] == "live")
                                         {
                                             Console.WriteLine("BANG");
-                                            shotgun.shoot();
+                                            shotgun.Shoot();
                                             foreach (Player p in opponents)
                                             {
                                                 if (p.name == __ans)
                                                 {
-                                                    p.takeDmg(1);
+                                                    p.TakeDmg(1);
                                                 }
                                             }
                                         } else if (shotgun.content[0] == "blank")
                                         {
                                             Console.WriteLine("*click");
-                                            shotgun.shoot();
+                                            shotgun.Shoot();
                                         }
                                     } else
                                     {
@@ -118,12 +118,12 @@ shoot - shotgun";
                                         if (shotgun.content[0] == "live")
                                         {
                                             Console.WriteLine("BANG");
-                                            shotgun.shoot();
-                                            opponents[0].takeDmg(1);
+                                            shotgun.Shoot();
+                                            opponents[0].TakeDmg(1);
                                         } else if (shotgun.content[0] == "blank")
                                         {
                                             Console.WriteLine("*click");
-                                            shotgun.shoot();
+                                            shotgun.Shoot();
                                         }
                                     }
                                     break;
@@ -206,7 +206,7 @@ item - item";
                 Thread.Sleep(2000);
             }
         }
-        public void useItem(string item, Shotgun shotgun=null, Player_R2 target=null)
+        public void UseItem(string item, Shotgun shotgun=null, Player_R2 target=null)
         {
             switch (item)
             {
@@ -242,7 +242,7 @@ item - item";
                     }
             }
         }
-        public override void turn(Shotgun shotgun)
+        public override void Turn(Shotgun shotgun)
         {
             Console.WriteLine(this);
             Console.WriteLine("type to use:\nshoot - shotgun\n>");
@@ -261,18 +261,18 @@ item - item";
                                     if (shotgun.content[0] == "live")
                                     {
                                         Console.WriteLine("BANG");
-                                        shotgun.shoot();
-                                        takeDmg(1);
+                                        shotgun.Shoot();
+                                        TakeDmg(1);
                                     }
                                     else if (shotgun.content[0] == "blank")
                                     {
                                         Console.WriteLine("*click");
-                                        shotgun.shoot();
+                                        shotgun.Shoot();
                                         Thread.Sleep(2000);
                                         Console.Clear();
                                         if (shotgun.content.Count() != 0)
                                         {
-                                            turn(shotgun);
+                                            Turn(shotgun);
                                         }
                                     }
                                     break;
@@ -287,19 +287,19 @@ item - item";
                                         if (shotgun.content[0] == "live")
                                         {
                                             Console.WriteLine("BANG");
-                                            shotgun.shoot();
+                                            shotgun.Shoot();
                                             foreach (Player p in opponents)
                                             {
                                                 if (p.name == __ans)
                                                 {
-                                                    p.takeDmg(1);
+                                                    p.TakeDmg(1);
                                                 }
                                             }
                                         }
                                         else if (shotgun.content[0] == "blank")
                                         {
                                             Console.WriteLine("*click");
-                                            shotgun.shoot();
+                                            shotgun.Shoot();
                                         }
                                     }
                                     else
@@ -308,13 +308,13 @@ item - item";
                                         if (shotgun.content[0] == "live")
                                         {
                                             Console.WriteLine("BANG");
-                                            shotgun.shoot();
-                                            opponents[0].takeDmg(1);
+                                            shotgun.Shoot();
+                                            opponents[0].TakeDmg(1);
                                         }
                                         else if (shotgun.content[0] == "blank")
                                         {
                                             Console.WriteLine("*click");
-                                            shotgun.shoot();
+                                            shotgun.Shoot();
                                         }
                                     }
                                     break;
@@ -339,12 +339,12 @@ item - item";
                             {
                                 if (op.name == __ans)
                                 {
-                                    useItem("cuffs", shotgun, op);
+                                    UseItem("cuffs", shotgun, op);
                                 }
                             }
                         } else if (_ans == "cuffs")
                         {
-                            useItem("cuffs", shotgun, opponents[0]);
+                            UseItem("cuffs", shotgun, opponents[0]);
                         }
                         break;
                     }
