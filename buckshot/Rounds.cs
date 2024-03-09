@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace buckshot
 {
@@ -31,11 +27,7 @@ namespace buckshot
                         Console.Clear();
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins");
-                            foreach (Player plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins}");
-                            }
+                            LogR1(players);
                         }
                         player1.Turn(shotgun);
                         Console.Clear();
@@ -45,11 +37,7 @@ namespace buckshot
                         }
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins");
-                            foreach (Player plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins}");
-                            }
+                            LogR1(players);
                         }
                         player2.Turn(shotgun);
                         Console.Clear();
@@ -59,11 +47,7 @@ namespace buckshot
                         }
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins");
-                            foreach (Player plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins}");
-                            }
+                            LogR1(players);
                         }
                         player3.Turn(shotgun);
                         Console.Clear();
@@ -101,11 +85,7 @@ namespace buckshot
                         Console.Clear();
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins");
-                            foreach (Player plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins}");
-                            }
+                            LogR1(players);
                         }
                         player1.Turn(shotgun);
                         Console.Clear();
@@ -115,11 +95,7 @@ namespace buckshot
                         }
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins");
-                            foreach (Player plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins}");
-                            }
+                            LogR1(players);
                         }
                         player2.Turn(shotgun);
                         Console.Clear();
@@ -158,11 +134,7 @@ namespace buckshot
                         Console.Clear();
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
-                            foreach (Player_R2 plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed}");
-                            }
+                            LogR2(players);
                         }
                         player1.Turn(shotgun);
                         Console.Clear();
@@ -172,11 +144,7 @@ namespace buckshot
                         }
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
-                            foreach (Player_R2 plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed}");
-                            }
+                            LogR2(players);
                         }
                         player2.Turn(shotgun);
                         Console.Clear();
@@ -186,11 +154,7 @@ namespace buckshot
                         }
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
-                            foreach (Player_R2 plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed}");
-                            }
+                            LogR2(players);
                         }
                         player3.Turn(shotgun);
                         Console.Clear();
@@ -231,11 +195,7 @@ namespace buckshot
                         Console.Clear();
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
-                            foreach (Player_R2 plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed}");
-                            }
+                            LogR2(players);
                         }
                         player1.Turn(shotgun);
                         Console.Clear();
@@ -245,11 +205,7 @@ namespace buckshot
                         }
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
-                            foreach (Player_R2 plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed}");
-                            }
+                            LogR2(players);
                         }
                         player2.Turn(shotgun);
                         Console.Clear();
@@ -290,11 +246,7 @@ namespace buckshot
                         Console.Clear();
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
-                            foreach (Player_R3 plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed} | {plr.lifeLocked}");
-                            }
+                            LogR3(players);
                         }
                         player1.Turn(shotgun);
                         Console.Clear();
@@ -304,11 +256,7 @@ namespace buckshot
                         }
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
-                            foreach (Player_R3 plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed} | {plr.lifeLocked}");
-                            }
+                            LogR3(players);
                         }
                         player2.Turn(shotgun);
                         Console.Clear();
@@ -318,11 +266,7 @@ namespace buckshot
                         }
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
-                            foreach (Player_R3 plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed} | {plr.lifeLocked}");
-                            }
+                            LogR3(players);
                         }
                         player3.Turn(shotgun);
                         Console.Clear();
@@ -363,11 +307,7 @@ namespace buckshot
                         Console.Clear();
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
-                            foreach (Player_R3 plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed} | {plr.lifeLocked}");
-                            }
+                            LogR3(players);
                         }
                         player1.Turn(shotgun);
                         Console.Clear();
@@ -377,11 +317,7 @@ namespace buckshot
                         }
                         if (testmode)
                         {
-                            Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
-                            foreach (Player_R3 plr in players)
-                            {
-                                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed} | {plr.lifeLocked}");
-                            }
+                            LogR3(players);
                         }
                         player2.Turn(shotgun);
                         Console.Clear();
@@ -399,6 +335,30 @@ namespace buckshot
                 }
             }
             Thread.Sleep(5000);
+        }
+        private static void LogR1(Player[] plrs)
+        {
+            Console.WriteLine("num | name | lives | wins");
+            foreach (Player plr in plrs)
+            {
+                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins}");
+            }
+        }
+        private static void LogR2(Player_R2[] plrs)
+        {
+            Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
+            foreach (Player_R2 plr in plrs)
+            {
+                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed}");
+            }
+        }
+        private static void LogR3(Player_R3[] plrs)
+        {
+            Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
+            foreach (Player_R3 plr in plrs)
+            {
+                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.Inv)} | {plr.Cuffed} | {plr.lifeLocked}");
+            }
         }
     }
 }
