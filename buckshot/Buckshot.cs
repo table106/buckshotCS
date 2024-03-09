@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace buckshot
 {
     internal class Buckshot
     {
-        public string Input(string input)
+        public static string Input(string input)
         {
-            Console.WriteLine(input);
+            Console.Write(input);
             string val = Console.ReadLine();
             return val;
         }
@@ -26,10 +23,9 @@ namespace buckshot
             Console.WriteLine("=======================");
             Console.WriteLine("version c0.1-beta");
             Console.WriteLine(@"press enter to start
-or type 'how' for instructions
->");
+or type 'how' for instructions");
             Shotgun shotgun = new Shotgun();
-            string ans = Console.ReadLine();
+            string ans = Input(">");
             Console.Beep();
             Console.Clear();
             if (ans == "how")
@@ -68,8 +64,8 @@ you cuff your enemy skipping their next turn");
                 string _ans;
                 do
                 {
-                    Console.WriteLine("where to?\n>");
-                    _ans = Console.ReadLine();
+                    Console.WriteLine("where to?");
+                    _ans = Input(">");
                     if (_ans == "1")
                     {
                         shotgun.Empty();
@@ -103,8 +99,8 @@ you cuff your enemy skipping their next turn");
                         string __ans;
                         do
                         {
-                            Console.WriteLine("where to? (3P mode)\n>");
-                            __ans = Console.ReadLine();
+                            Console.WriteLine("where to? (3P mode)");
+                            __ans = Input(">");
                             if (__ans == "1")
                             {
                                 shotgun.Empty();
