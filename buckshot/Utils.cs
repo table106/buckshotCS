@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
 
 namespace buckshot
 {
@@ -83,6 +79,18 @@ namespace buckshot
         public static string GetCurrentShell(Shotgun shotgun)
         {
             return shotgun.Content[0];
+        }
+        public static void HandoutItems(int count, Player_R2 plr1, Player_R2 plr2, Player_R2 plr3=null)
+        {
+            plr1.GetItem(count);
+            plr2.GetItem(count);
+            plr3?.GetItem(count);
+        }
+        public static void HandoutItems(int count, Player_R3 plr1, Player_R3 plr2, Player_R3 plr3=null)
+        {
+            plr1.GetItem(count);
+            plr2.GetItem(count);
+            plr3?.GetItem(count);
         }
     }
 }

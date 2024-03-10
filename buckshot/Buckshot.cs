@@ -109,7 +109,8 @@ you cuff your enemy skipping their next turn");
                                 Player_R2 plr1 = new Player_R2(1, "plr1", 4, 0);
                                 Player_R2 plr2 = new Player_R2(2, "plr2", 4, 0);
                                 Player_R2 plr3 = new Player_R2(3, "plr3", 4, 0);
-                                Utils.InitOpponents(plr1, plr2, (Player)plr3);
+                                Utils.InitOpponents(plr1, plr2, plr3);
+                                Utils.HandoutItems(1, plr1, plr2, plr3);
                                 Player_R2[] plrs = { plr1, plr2, plr3 };
                                 Rounds.Round2(shotgun, true, plrs);
                             }
@@ -119,6 +120,7 @@ you cuff your enemy skipping their next turn");
                                 Player_R3 plr2 = new Player_R3(2, "plr2", 6, 0);
                                 Player_R3 plr3 = new Player_R3(3, "plr3", 6, 0);
                                 Utils.InitOpponents(plr1, plr2, plr3);
+                                Utils.HandoutItems(2, plr1, plr2, plr3);
                                 Player_R3[] plrs = { plr1, plr2, plr3 };
                                 Rounds.Round3(shotgun, true, plrs);
                             }
@@ -167,10 +169,7 @@ you cuff your enemy skipping their next turn");
                 Utils.InitOpponents(player1, player2, player3);
                 Player_R2[] _plrs = { _player1, _player2, _player3 };
                 shotgun.Empty();
-
-                _player1.GetItem(1);
-                _player2.GetItem(1);
-                _player3.GetItem(1);
+                Utils.HandoutItems(1, _player1, _player2, _player3);
 
                 Rounds.Round2(shotgun, false, _plrs);
 
@@ -186,18 +185,15 @@ you cuff your enemy skipping their next turn");
                 Utils.InitOpponents(__player1, __player2, __player3);
                 Player_R3[] __plrs = { __player1, __player2, __player3 };
                 shotgun.Empty();
-
-                __player1.GetItem(2);
-                __player2.GetItem(2);
-                __player3.GetItem(2);
+                Utils.HandoutItems(2, __player1, __player2, __player3);
 
                 Rounds.Round3(shotgun, false, __plrs);
 
                 Console.Clear();
                 Console.WriteLine("end");
                 Thread.Sleep(2000);
-                string __ans = Utils.Input("engage again?\nyes/no");
-                if (__ans == "yes")
+                string __ans = Utils.Input("engage again?\ny/n");
+                if (__ans == "y" || __ans == "yes")
                 {
                     Main(args);
                 }
