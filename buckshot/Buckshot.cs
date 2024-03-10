@@ -266,8 +266,8 @@ you cuff your enemy skipping their next turn");
             Console.WriteLine("end");
             Thread.Sleep(2);
             Console.WriteLine("engage again?\nyes/no");
-            string ans_ = Input(">");
-            if (ans_ == "yes")
+            string ___ans = Input(">");
+            if (___ans == "yes")
             {
                 Main(args);
             } else
