@@ -1,4 +1,12 @@
-c1.0-beta
+c1.0-beta (why am i doing this again)
 - well for some reason this garbage is in C# too now
 - i guess its cool?
 - everything is the same, for now
+
+c2.0-beta (security update)
++ important variables are encapsulated to ensure security
++ all instances of Console.ReadLine() now replaced by Utils.Input()
++ Utils.Input() optimized
++ all method names now start with capital letters
++ sleeps sleeping too short fixed
++ some unimportant variable names changed
