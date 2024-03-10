@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace buckshot
 {
@@ -11,26 +9,44 @@ namespace buckshot
     {
         public int num;
         public string name;
+        public List<Player> opponents = new List<Player>();
         protected int _lives;
+
         public int Lives
         {
             get { return _lives; }
-            set { _lives = value; }
+            set {
+                if (value > _lives)
+                {
+                    _lives = 1;
+                } else
+                {
+                    _lives = value;
+                }
+            }
         }
         protected int _wins;
         public int Wins
         {
             get { return _wins; }
-            set { _wins = value; }
+            set
+            {
+                if (value > 2)
+                {
+                    _wins = 1;
+                } else
+                {
+                    _wins = value;
+                }
+            }
         }
-        public int lifeCap;
-        public List<Player> opponents = new List<Player>();
+
+
         public Player(int num, string name, int lives) { 
             this.num = num;
             this.name = name;
             _lives = lives;
             _wins = 0;
-            lifeCap = _lives;
             opponents = new List<Player>();
         }
         public override string ToString()
@@ -71,18 +87,18 @@ shoot - shotgun";
                             case "self":
                                 {
                                     Thread.Sleep(4000);
-                                    if (shotgun.content[0] == "live")
+                                    if (Utils.GetCurrentShell(shotgun) == "live")
                                     {
                                         Console.WriteLine("BANG");
                                         shotgun.Shoot();
                                         TakeDmg(1);
-                                    } else if (shotgun.content[0] == "blank")
+                                    } else if (Utils.GetCurrentShell(shotgun) == "blank")
                                     {
                                         Console.WriteLine("*click");
                                         shotgun.Shoot();
                                         Thread.Sleep(2000);
                                         Console.Clear();
-                                        if (shotgun.content.Count() != 0)
+                                        if (shotgun.Content.Count() != 0)
                                         {
                                             Turn(shotgun);
                                         }
@@ -96,7 +112,7 @@ shoot - shotgun";
                                         Console.WriteLine($"who will you shoot?\n{string.Join(", ",opponents)}\n>");
                                         string __ans = Console.ReadLine();
                                         Thread.Sleep(4000);
-                                        if (shotgun.content[0] == "live")
+                                        if (Utils.GetCurrentShell(shotgun) == "live")
                                         {
                                             Console.WriteLine("BANG");
                                             shotgun.Shoot();
@@ -107,7 +123,7 @@ shoot - shotgun";
                                                     p.TakeDmg(1);
                                                 }
                                             }
-                                        } else if (shotgun.content[0] == "blank")
+                                        } else if (Utils.GetCurrentShell(shotgun) == "blank")
                                         {
                                             Console.WriteLine("*click");
                                             shotgun.Shoot();
@@ -115,12 +131,12 @@ shoot - shotgun";
                                     } else
                                     {
                                         Thread.Sleep(4000);
-                                        if (shotgun.content[0] == "live")
+                                        if (Utils.GetCurrentShell(shotgun) == "live")
                                         {
                                             Console.WriteLine("BANG");
                                             shotgun.Shoot();
                                             opponents[0].TakeDmg(1);
-                                        } else if (shotgun.content[0] == "blank")
+                                        } else if (Utils.GetCurrentShell(shotgun) == "blank")
                                         {
                                             Console.WriteLine("*click");
                                             shotgun.Shoot();
@@ -155,20 +171,21 @@ shoot - shotgun";
             get { return _inv; }
             set { _inv = value; }
         }
-        protected int cuffed;
+        protected int _cuffed;
         public int Cuffed
         {
-            get { return cuffed; }
-            set { cuffed = value; }
+            get { return _cuffed; }
+            set { _cuffed = value; }
         }
+        public int lifeCap;
         public Player_R2(int num, string name, int lives, int wins) : base(num,name,lives) {
             this.num = num;
             this.name = name;
             _lives = lives;
-            this._wins = wins;
+            _wins = wins;
             opponents = new List<Player_R2>();
             _inv = new List<string>();
-            cuffed = 0;
+            _cuffed = 0;
         }
         public override string ToString()
         {
@@ -232,7 +249,7 @@ item - item";
                     }
                 case "cuffs":
                     {
-                        Items.UseCuffs(this, target);
+                        Items.UseCuffs(this, target, shotgun);
                         break;
                     }
                 default:
@@ -258,19 +275,19 @@ item - item";
                             case "self":
                                 {
                                     Thread.Sleep(4000);
-                                    if (shotgun.content[0] == "live")
+                                    if (Utils.GetCurrentShell(shotgun) == "live")
                                     {
                                         Console.WriteLine("BANG");
                                         shotgun.Shoot();
                                         TakeDmg(1);
                                     }
-                                    else if (shotgun.content[0] == "blank")
+                                    else if (Utils.GetCurrentShell(shotgun) == "blank")
                                     {
                                         Console.WriteLine("*click");
                                         shotgun.Shoot();
                                         Thread.Sleep(2000);
                                         Console.Clear();
-                                        if (shotgun.content.Count() != 0)
+                                        if (shotgun.Content.Count() != 0)
                                         {
                                             Turn(shotgun);
                                         }
@@ -284,7 +301,7 @@ item - item";
                                         Console.WriteLine($"who will you shoot?\n{string.Join(", ", opponents)}\n>");
                                         string __ans = Console.ReadLine();
                                         Thread.Sleep(4000);
-                                        if (shotgun.content[0] == "live")
+                                        if (Utils.GetCurrentShell(shotgun) == "live")
                                         {
                                             Console.WriteLine("BANG");
                                             shotgun.Shoot();
@@ -296,7 +313,7 @@ item - item";
                                                 }
                                             }
                                         }
-                                        else if (shotgun.content[0] == "blank")
+                                        else if (Utils.GetCurrentShell(shotgun) == "blank")
                                         {
                                             Console.WriteLine("*click");
                                             shotgun.Shoot();
@@ -305,13 +322,13 @@ item - item";
                                     else
                                     {
                                         Thread.Sleep(4000);
-                                        if (shotgun.content[0] == "live")
+                                        if (Utils.GetCurrentShell(shotgun) == "live")
                                         {
                                             Console.WriteLine("BANG");
                                             shotgun.Shoot();
                                             opponents[0].TakeDmg(1);
                                         }
-                                        else if (shotgun.content[0] == "blank")
+                                        else if (Utils.GetCurrentShell(shotgun) == "blank")
                                         {
                                             Console.WriteLine("*click");
                                             shotgun.Shoot();
@@ -329,8 +346,8 @@ item - item";
                     }
                 case "item":
                     {
-                        Console.WriteLine($"pick an item\n{string.Join(", ",_inv)}\n>");
-                        string _ans = Console.ReadLine();
+                        Console.WriteLine($"pick an item\n{string.Join(", ",_inv)}");
+                        string _ans = Utils.Input(">");
                         if (_ans == "cuffs" && opponents.Count() > 1)
                         {
                             Console.WriteLine($"who are you using them on?\n{string.Join(", ",opponents)}");
@@ -370,7 +387,7 @@ item - item";
             _wins = wins;
             opponents = new List<Player_R3>();
             _inv = new List<string>();
-            cuffed = 0;
+            _cuffed = 0;
             lifeLocked = false;
         }
         public override string ToString()

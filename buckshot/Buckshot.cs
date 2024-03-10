@@ -6,12 +6,6 @@ namespace buckshot
 {
     internal class Buckshot
     {
-        public static string Input(string input)
-        {
-            Console.Write(input);
-            string val = Console.ReadLine();
-            return val;
-        }
         static void Main(string[] args)
         {
             Console.Clear();
@@ -25,7 +19,7 @@ namespace buckshot
             Console.WriteLine(@"press enter to start
 or type 'how' for instructions");
             Shotgun shotgun = new Shotgun();
-            string ans = Input(">");
+            string ans = Utils.Input();
             Console.Beep();
             Console.Clear();
             if (ans == "how")
@@ -64,8 +58,7 @@ you cuff your enemy skipping their next turn");
                 string _ans;
                 do
                 {
-                    Console.WriteLine("where to?");
-                    _ans = Input(">");
+                    _ans = Utils.Input("where to?");
                     if (_ans == "1")
                     {
                         shotgun.Empty();
@@ -99,8 +92,7 @@ you cuff your enemy skipping their next turn");
                         string __ans;
                         do
                         {
-                            Console.WriteLine("where to? (3P mode)");
-                            __ans = Input(">");
+                            __ans = Utils.Input("where to? (3P mode)");
                             if (__ans == "1")
                             {
                                 shotgun.Empty();
@@ -140,27 +132,22 @@ you cuff your enemy skipping their next turn");
             }
             else if (ans == "actuallytheres3")
             {
-                Console.WriteLine("what does player 1 call themselves?");
-                Player player1 = new Player(1, Input(">"), 2);
+                Player player1 = new Player(1, Utils.Input("what does player 1 call themselves?"), 2);
 
-                Console.WriteLine("what about player 2?");
-                Player player2 = new Player(2, Input(">"), 2);
+                Player player2 = new Player(2, Utils.Input("what about player 2?"), 2);
 
                 string[] names = { player1.name };
                 while (!Utils.CheckNames(player2.name, names))
                 {
-                    Console.WriteLine("pick another name.");
-                    player2 = new Player(2, Input(">"), 2);
+                    player2 = new Player(2, Utils.Input("pick another name."), 2);
                 }
 
-                Console.WriteLine("and player 3?");
-                Player player3 = new Player(3, Input(">"), 2);
+                Player player3 = new Player(3, Utils.Input("and player 3?"), 2);
 
                 string[] _names = { player1.name, player2.name };
                 while (!Utils.CheckNames(player3.name, _names))
                 {
-                    Console.WriteLine("pick another name.");
-                    player3 = new Player(3, Input(">"), 2);
+                    player3 = new Player(3, Utils.Input("pick another name."), 2);
                 }
 
                 Utils.InitOpponents(player1, player2, player3);
@@ -207,17 +194,23 @@ you cuff your enemy skipping their next turn");
                 Rounds.Round3(shotgun, false, __plrs);
 
                 Console.Clear();
-                Console.WriteLine("you finished the game!\nexiting in 5 seconds");
-                Thread.Sleep(5000);
-                Environment.Exit(0);
+                Console.WriteLine("end");
+                Thread.Sleep(2000);
+                string __ans = Utils.Input("engage again?\nyes/no");
+                if (__ans == "yes")
+                {
+                    Main(args);
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
             }
             else
             {
-                Console.WriteLine("what does player 1 call themselves?");
-                Player player1 = new Player(1, Input(">"), 2);
+                Player player1 = new Player(1, Utils.Input("what does player 1 call themselves?"), 2);
 
-                Console.WriteLine("what about player 2?\n>");
-                Player player2 = new Player(2, Input(">"), 2);
+                Player player2 = new Player(2, Utils.Input("what about player 2?"), 2);
 
                 Utils.InitOpponents(player1, player2);
                 Player[] plrs = { player1, player2 };
@@ -264,9 +257,8 @@ you cuff your enemy skipping their next turn");
             }
             Console.Clear();
             Console.WriteLine("end");
-            Thread.Sleep(2);
-            Console.WriteLine("engage again?\nyes/no");
-            string ___ans = Input(">");
+            Thread.Sleep(2000);
+            string ___ans = Utils.Input("engage again?\nyes/no");
             if (___ans == "yes")
             {
                 Main(args);

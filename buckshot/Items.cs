@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace buckshot
 {
@@ -36,11 +32,12 @@ namespace buckshot
             }
             p.Inv.Remove("cigarette");
         }
-        public static void UseCuffs(Player_R2 user, Player_R2 target)
+        public static void UseCuffs(Player_R2 user, Player_R2 target, Shotgun shotgun)
         {
             if (target.Cuffed > 0)
             {
                 Console.WriteLine("they're already cuffed. (item not consumed)");
+                user.Turn(shotgun);
             } else
             {
                 target.Cuffed = 1;

@@ -9,6 +9,11 @@ namespace buckshot
 {
     internal class Utils
     {
+        public static string Input(string input="")
+        {
+            Console.Write(input+"\n>");
+            return Console.ReadLine();
+        }
         public static bool CheckNames(string nameToCheck, string[] names)
         {
             if (names.Contains(nameToCheck))
@@ -70,7 +75,7 @@ namespace buckshot
         }
         public static string GetCurrentShell(Shotgun shotgun)
         {
-            return shotgun.content[0];
+            return shotgun.Content[0];
         }
     }
 }

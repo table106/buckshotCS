@@ -22,7 +22,7 @@ namespace buckshot
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
                     Console.Clear();
-                    while (player1.Lives > 0 && player2.Lives > 0 && player3.Lives > 0 && shotgun.content.Count != 0)
+                    while (player1.Lives > 0 && player2.Lives > 0 && player3.Lives > 0 && shotgun.Content.Count != 0)
                     {
                         Console.Clear();
                         if (testmode)
@@ -80,7 +80,7 @@ namespace buckshot
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
                     Console.Clear();
-                    while (player1.Lives > 0 && player2.Lives > 0 && shotgun.content.Count != 0)
+                    while (player1.Lives > 0 && player2.Lives > 0 && shotgun.Content.Count != 0)
                     {
                         Console.Clear();
                         if (testmode)
@@ -129,7 +129,7 @@ namespace buckshot
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
                     Console.Clear();
-                    while (player1.Lives > 0 && player2.Lives > 0 && player3.Lives > 0 && shotgun.content.Count != 0)
+                    while (player1.Lives > 0 && player2.Lives > 0 && player3.Lives > 0 && shotgun.Content.Count != 0)
                     {
                         Console.Clear();
                         if (testmode)
@@ -190,7 +190,7 @@ namespace buckshot
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
                     Console.Clear();
-                    while (player1.Lives > 0 && player2.Lives > 0 && shotgun.content.Count != 0)
+                    while (player1.Lives > 0 && player2.Lives > 0 && shotgun.Content.Count != 0)
                     {
                         Console.Clear();
                         if (testmode)
@@ -241,7 +241,7 @@ namespace buckshot
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
                     Console.Clear();
-                    while (player1.Lives > 0 && player2.Lives > 0 && player3.Lives > 0 && shotgun.content.Count != 0)
+                    while (player1.Lives > 0 && player2.Lives > 0 && player3.Lives > 0 && shotgun.Content.Count != 0)
                     {
                         Console.Clear();
                         if (testmode)
@@ -302,7 +302,7 @@ namespace buckshot
                     Console.WriteLine($"LOADED SHELLS: {lives} LIVE, {blanks} BLANK");
                     Thread.Sleep(5000);
                     Console.Clear();
-                    while (player1.Lives > 0 && player2.Lives > 0 && shotgun.content.Count != 0)
+                    while (player1.Lives > 0 && player2.Lives > 0 && shotgun.Content.Count != 0)
                     {
                         Console.Clear();
                         if (testmode)
