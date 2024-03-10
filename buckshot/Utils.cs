@@ -11,7 +11,14 @@ namespace buckshot
     {
         public static string Input(string input="")
         {
-            Console.Write(input+"\n>");
+            if (input == "" || input.Length == 0)
+            {
+                Console.Write(">");
+            }
+            else
+            {
+                Console.Write(input + "\n>");
+            }
             return Console.ReadLine();
         }
         public static bool CheckNames(string nameToCheck, string[] names)

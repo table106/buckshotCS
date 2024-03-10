@@ -9,14 +9,14 @@ namespace buckshot
     {
         public int num;
         public string name;
-        public List<Player> opponents = new List<Player>();
+        public List<Player> opponents;
         protected int _lives;
 
         public int Lives
         {
             get { return _lives; }
             set {
-                if (value > _lives)
+                if (value > _lives+1)
                 {
                     _lives = 1;
                 } else
@@ -74,14 +74,12 @@ shoot - shotgun";
         public virtual void Turn(Shotgun shotgun)
         {
             Console.WriteLine(this);
-            Console.WriteLine("type to use:\nshoot - shotgun\n>");
-            string ans = Console.ReadLine();
+            string ans = Utils.Input();
             switch (ans)
             {
                 case "shoot":
                     {
-                        Console.WriteLine("shoot self or enemy?\n>");
-                        string _ans = Console.ReadLine();
+                        string _ans = Utils.Input("shoot self or enemy?");
                         switch (_ans)
                         {
                             case "self":
@@ -109,8 +107,7 @@ shoot - shotgun";
                                 {
                                     if (opponents.Count() > 1)
                                     {
-                                        Console.WriteLine($"who will you shoot?\n{string.Join(", ",opponents)}\n>");
-                                        string __ans = Console.ReadLine();
+                                        string __ans = Utils.Input($"who will you shoot?\n{string.Join(", ", opponents)}");
                                         Thread.Sleep(4000);
                                         if (Utils.GetCurrentShell(shotgun) == "live")
                                         {
@@ -164,7 +161,7 @@ shoot - shotgun";
     }
     internal class Player_R2 : Player
     {
-        public new List<Player_R2> opponents = new List<Player_R2>();
+        public new List<Player_R2> opponents;
         protected List<string> _inv;
         public List<string> Inv
         {
@@ -186,6 +183,7 @@ shoot - shotgun";
             opponents = new List<Player_R2>();
             _inv = new List<string>();
             _cuffed = 0;
+            lifeCap = _lives;
         }
         public override string ToString()
         {
@@ -193,14 +191,14 @@ shoot - shotgun";
             {
                 return $@"{name}'s turn
 you have {_lives} lives
-your items: {_inv}
+your items: {string.Join(", ", _inv)}
 type to use:
 shoot - shotgun
 item - item";
             }
             return $@"{name}'s turn
 you have 1 life
-your items: {_inv}
+your items: {string.Join(", ", _inv)}
 type to use:
 shoot - shotgun
 item - item";
@@ -262,14 +260,12 @@ item - item";
         public override void Turn(Shotgun shotgun)
         {
             Console.WriteLine(this);
-            Console.WriteLine("type to use:\nshoot - shotgun\n>");
-            string ans = Console.ReadLine();
+            string ans = Utils.Input();
             switch (ans)
             {
                 case "shoot":
                     {
-                        Console.WriteLine("shoot self or enemy?\n>");
-                        string _ans = Console.ReadLine();
+                        string _ans = Utils.Input("shoot self or enemy?");
                         switch (_ans)
                         {
                             case "self":
@@ -298,14 +294,13 @@ item - item";
                                 {
                                     if (opponents.Count() > 1)
                                     {
-                                        Console.WriteLine($"who will you shoot?\n{string.Join(", ", opponents)}\n>");
-                                        string __ans = Console.ReadLine();
+                                        string __ans = Utils.Input($"who will you shoot?\n{string.Join(", ", opponents)}");
                                         Thread.Sleep(4000);
                                         if (Utils.GetCurrentShell(shotgun) == "live")
                                         {
                                             Console.WriteLine("BANG");
                                             shotgun.Shoot();
-                                            foreach (Player p in opponents)
+                                            foreach (Player_R2 p in opponents)
                                             {
                                                 if (p.name == __ans)
                                                 {
@@ -346,12 +341,10 @@ item - item";
                     }
                 case "item":
                     {
-                        Console.WriteLine($"pick an item\n{string.Join(", ",_inv)}");
-                        string _ans = Utils.Input(">");
+                        string _ans = Utils.Input($"pick an item\n{string.Join(", ", _inv)}");
                         if (_ans == "cuffs" && opponents.Count() > 1)
                         {
-                            Console.WriteLine($"who are you using them on?\n{string.Join(", ",opponents)}");
-                            string __ans = Console.ReadLine();
+                            string __ans = Utils.Input($"who are you using them on?\n{string.Join(", ", opponents)}");
                             foreach (Player_R2 op in opponents)
                             {
                                 if (op.name == __ans)
@@ -377,7 +370,7 @@ item - item";
     }
     internal class Player_R3 : Player_R2
     {
-        public new List<Player_R3> opponents = new List<Player_R3>();
+        public new List<Player_R3> opponents;
         public bool lifeLocked;
         public Player_R3(int num, string name, int lives, int wins) : base(num,name,lives,wins)
         {
@@ -396,7 +389,7 @@ item - item";
             {
                 return $@"{name}'s turn
 you have {_lives} lives
-your items: {_inv}
+your items: {string.Join(", ", _inv)}
 type to use:
 shoot - shotgun
 item - item";
@@ -404,10 +397,163 @@ item - item";
             lifeLocked = true;
             return $@"{name}'s turn
 you have # lives
-your items: {_inv}
+your items: {string.Join(", ", _inv)}
 type to use:
 shoot - shotgun
 item - item";
+        }
+        public void UseItem(string item, Shotgun shotgun = null, Player_R3 target = null)
+        {
+            switch (item)
+            {
+                case "beer":
+                    {
+                        Items.UseBeer(this, shotgun);
+                        break;
+                    }
+                case "knife":
+                    {
+                        Items.UseKnife(this, shotgun);
+                        break;
+                    }
+                case "magnifying glass":
+                    {
+                        Items.UseGlass(this, shotgun);
+                        break;
+                    }
+                case "cigarette":
+                    {
+                        if (lifeLocked)
+                        {
+                            Console.WriteLine("you smoke one... nothing happens.");
+                            _inv.Remove("cigarette");
+                            break;
+                        }
+                        Items.UseCig(this);
+                        break;
+                    }
+                case "cuffs":
+                    {
+                        Items.UseCuffs(this, target, shotgun);
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("failed to pick an item");
+                        break;
+                    }
+            }
+        }
+        public override void Turn(Shotgun shotgun)
+        {
+            Console.WriteLine(this);
+            string ans = Utils.Input();
+            switch (ans)
+            {
+                case "shoot":
+                    {
+                        string _ans = Utils.Input("shoot self or enemy?");
+                        switch (_ans)
+                        {
+                            case "self":
+                                {
+                                    Thread.Sleep(4000);
+                                    if (Utils.GetCurrentShell(shotgun) == "live")
+                                    {
+                                        Console.WriteLine("BANG");
+                                        shotgun.Shoot();
+                                        TakeDmg(1);
+                                    }
+                                    else if (Utils.GetCurrentShell(shotgun) == "blank")
+                                    {
+                                        Console.WriteLine("*click");
+                                        shotgun.Shoot();
+                                        Thread.Sleep(2000);
+                                        Console.Clear();
+                                        if (shotgun.Content.Count() != 0)
+                                        {
+                                            Turn(shotgun);
+                                        }
+                                    }
+                                    break;
+                                }
+                            case "enemy":
+                                {
+                                    if (opponents.Count() > 1)
+                                    {
+                                        string __ans = Utils.Input($"who will you shoot?\n{string.Join(", ", opponents)}");
+                                        Thread.Sleep(4000);
+                                        if (Utils.GetCurrentShell(shotgun) == "live")
+                                        {
+                                            Console.WriteLine("BANG");
+                                            shotgun.Shoot();
+                                            foreach (Player_R3 p in opponents)
+                                            {
+                                                if (p.name == __ans)
+                                                {
+                                                    p.TakeDmg(1);
+                                                }
+                                            }
+                                        }
+                                        else if (Utils.GetCurrentShell(shotgun) == "blank")
+                                        {
+                                            Console.WriteLine("*click");
+                                            shotgun.Shoot();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Thread.Sleep(4000);
+                                        if (Utils.GetCurrentShell(shotgun) == "live")
+                                        {
+                                            Console.WriteLine("BANG");
+                                            shotgun.Shoot();
+                                            opponents[0].TakeDmg(1);
+                                        }
+                                        else if (Utils.GetCurrentShell(shotgun) == "blank")
+                                        {
+                                            Console.WriteLine("*click");
+                                            shotgun.Shoot();
+                                        }
+                                    }
+                                    break;
+                                }
+                            default:
+                                {
+                                    Console.WriteLine("failed to pick a target");
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+                case "item":
+                    {
+                        string _ans = Utils.Input($"pick an item\n{string.Join(", ", _inv)}");
+                        if (_ans == "cuffs" && opponents.Count() > 1)
+                        {
+                            string __ans = Utils.Input($"who are you using them on?\n{string.Join(", ", opponents)}");
+                            foreach (Player_R3 op in opponents)
+                            {
+                                if (op.name == __ans)
+                                {
+                                    UseItem("cuffs", shotgun, op);
+                                }
+                            }
+                        }
+                        else if (_ans == "cuffs")
+                        {
+                            UseItem("cuffs", shotgun, opponents[0]);
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("failed to pick an action");
+                        break;
+                    }
+            }
+            Thread.Sleep(2000);
+            Console.Clear();
         }
     }
 }
