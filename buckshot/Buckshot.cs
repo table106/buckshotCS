@@ -74,6 +74,7 @@ you cuff your enemy skipping their next turn");
                         Player_R2 plr1 = new Player_R2(1, "plr1", 4, 0);
                         Player_R2 plr2 = new Player_R2(2, "plr2", 4, 0);
                         Utils.InitOpponents(plr1, plr2);
+                        Utils.HandoutItems(1, plr1, plr2);
                         Player_R2[] plrs = { plr1, plr2 };
                         Rounds.Round2(shotgun, true, plrs);
                     }
@@ -83,6 +84,7 @@ you cuff your enemy skipping their next turn");
                         Player_R3 plr1 = new Player_R3(1, "plr1", 6, 0);
                         Player_R3 plr2 = new Player_R3(2, "plr2", 6, 0);
                         Utils.InitOpponents(plr1, plr2);
+                        Utils.HandoutItems(2, plr1, plr2);
                         Player_R3[] plrs = { plr1, plr2 };
                         Rounds.Round3(shotgun, true, plrs);
                     }

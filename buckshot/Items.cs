@@ -8,18 +8,18 @@ namespace buckshot
         {
             Console.WriteLine($"you unloaded a {Utils.GetCurrentShell(shotgun)} shell");
             shotgun.Shoot();
-            p.Inv.Remove("beer");
+            p.inv.Remove("beer");
         }
         public static void UseKnife(Player_R2 p, Shotgun shotgun)
         {
             Console.WriteLine("the next shot will deal 2 damage");
             shotgun.dmg = 2;
-            p.Inv.Remove("knife");
+            p.inv.Remove("knife");
         }
         public static void UseGlass(Player_R2 p, Shotgun shotgun)
         {
             Console.WriteLine($"the shell in the chamber is {Utils.GetCurrentShell(shotgun)}");
-            p.Inv.Remove("magnifying glass");
+            p.inv.Remove("magnifying glass");
         }
         public static void UseCig(Player_R2 p)
         {
@@ -30,18 +30,18 @@ namespace buckshot
             {
                 p.Heal();
             }
-            p.Inv.Remove("cigarette");
+            p.inv.Remove("cigarette");
         }
         public static void UseCuffs(Player_R2 user, Player_R2 target, Shotgun shotgun)
         {
-            if (target.Cuffed > 0)
+            if (target.cuffed > 0)
             {
                 Console.WriteLine("they're already cuffed. (item not consumed)");
                 user.Turn(shotgun);
             } else
             {
-                target.Cuffed = 1;
-                user.Inv.Remove("cuffs");
+                target.cuffed = 1;
+                user.inv.Remove("cuffs");
             }
         }
     }

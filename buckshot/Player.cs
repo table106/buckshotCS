@@ -162,18 +162,8 @@ shoot - shotgun";
     internal class Player_R2 : Player
     {
         public new List<Player_R2> opponents;
-        protected List<string> _inv;
-        public List<string> Inv
-        {
-            get { return _inv; }
-            set { _inv = value; }
-        }
-        protected int _cuffed;
-        public int Cuffed
-        {
-            get { return _cuffed; }
-            set { _cuffed = value; }
-        }
+        public List<string> inv;
+        public int cuffed;
         public int lifeCap;
         public Player_R2(int num, string name, int lives, int wins) : base(num,name,lives) {
             this.num = num;
@@ -181,8 +171,8 @@ shoot - shotgun";
             _lives = lives;
             _wins = wins;
             opponents = new List<Player_R2>();
-            _inv = new List<string>();
-            _cuffed = 0;
+            inv = new List<string>();
+            cuffed = 0;
             lifeCap = _lives;
         }
         public override string ToString()
@@ -191,14 +181,14 @@ shoot - shotgun";
             {
                 return $@"{name}'s turn
 you have {_lives} lives
-your items: {string.Join(", ", _inv)}
+your items: {string.Join(", ", inv)}
 type to use:
 shoot - shotgun
 item - item";
             }
             return $@"{name}'s turn
 you have 1 life
-your items: {string.Join(", ", _inv)}
+your items: {string.Join(", ", inv)}
 type to use:
 shoot - shotgun
 item - item";
@@ -215,12 +205,12 @@ item - item";
         {
             string[] allItems = {"beer","knife","magnifying glass","cigarette","cuffs"};
             Random rnd = new Random();
-            for (int i = much; i > 0; i--)
+            for (int i = 0; i < much; i++)
             {
                 int id1 = rnd.Next(0,4);
                 int id2 = rnd.Next(0,4);
-                _inv.Add(allItems[id1]);
-                _inv.Add(allItems[id2]);
+                inv.Add(allItems[id1]);
+                inv.Add(allItems[id2]);
                 Console.WriteLine($"{name} got {allItems[id1]} and {allItems[id2]}");
                 Thread.Sleep(2000);
             }
@@ -345,7 +335,7 @@ item - item";
                     }
                 case "item":
                     {
-                        string _ans = Utils.Input($"pick an item\n{string.Join(", ", _inv)}");
+                        string _ans = Utils.Input($"pick an item\n{string.Join(", ", inv)}");
                         if (_ans == "cuffs" && opponents.Count() > 1)
                         {
                             string __ans = Utils.Input($"who are you using them on?\n{string.Join(", ", opponents)}");
@@ -383,8 +373,8 @@ item - item";
             _lives = lives;
             _wins = wins;
             opponents = new List<Player_R3>();
-            _inv = new List<string>();
-            _cuffed = 0;
+            inv = new List<string>();
+            cuffed = 0;
             lifeLocked = false;
         }
         public override string ToString()
@@ -393,7 +383,7 @@ item - item";
             {
                 return $@"{name}'s turn
 you have {_lives} lives
-your items: {string.Join(", ", _inv)}
+your items: {string.Join(", ", inv)}
 type to use:
 shoot - shotgun
 item - item";
@@ -401,7 +391,7 @@ item - item";
             lifeLocked = true;
             return $@"{name}'s turn
 you have # lives
-your items: {string.Join(", ", _inv)}
+your items: {string.Join(", ", inv)}
 type to use:
 shoot - shotgun
 item - item";
@@ -434,7 +424,7 @@ item - item";
                         if (lifeLocked)
                         {
                             Console.WriteLine("you smoke one... nothing happens.");
-                            _inv.Remove("cigarette");
+                            inv.Remove("cigarette");
                             break;
                         }
                         Items.UseCig(this);
@@ -536,7 +526,7 @@ item - item";
                     }
                 case "item":
                     {
-                        string _ans = Utils.Input($"pick an item\n{string.Join(", ", _inv)}");
+                        string _ans = Utils.Input($"pick an item\n{string.Join(", ", inv)}");
                         if (_ans == "cuffs" && opponents.Count() > 1)
                         {
                             string __ans = Utils.Input($"who are you using them on?\n{string.Join(", ", opponents)}");
