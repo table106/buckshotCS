@@ -349,7 +349,7 @@ namespace buckshot
             Console.WriteLine("num | name | lives | wins | inventory | cuffed state");
             foreach (Player_R2 plr in plrs)
             {
-                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.inv)} | {plr.cuffed}");
+                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.inv)} | {plr.Cuffed}");
             }
         }
         private static void LogR3(Player_R3[] plrs)
@@ -357,7 +357,7 @@ namespace buckshot
             Console.WriteLine("num | name | lives | wins | inventory | cuffed state | lifelocked");
             foreach (Player_R3 plr in plrs)
             {
-                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.inv)} | {plr.cuffed} | {plr.lifeLocked}");
+                Console.WriteLine($"{plr.num} | {plr.name} | {plr.Lives} | {plr.Wins} | {string.Join(", ", plr.inv)} | {plr.Cuffed} | {plr.lifeLocked}");
             }
         }
     }

@@ -163,8 +163,36 @@ shoot - shotgun";
     {
         public new List<Player_R2> opponents;
         public List<string> inv;
-        public int cuffed;
-        public int lifeCap;
+        protected int _cuffed;
+        public int Cuffed
+        {
+            get { return _cuffed; }
+            set
+            {
+                if (value > 2)
+                {
+                    _cuffed = 0;
+                } else
+                {
+                    _cuffed = value;
+                }
+            }
+        }
+        protected int _lifeCap;
+        public int LifeCap
+        {
+            get { return _lifeCap; }
+            set
+            {
+                if (value > _lives)
+                {
+                    _lifeCap = 1;
+                } else
+                {
+                    _lifeCap = value;
+                }
+            }
+        }
         public Player_R2(int num, string name, int lives, int wins) : base(num,name,lives) {
             this.num = num;
             this.name = name;
@@ -172,8 +200,8 @@ shoot - shotgun";
             _wins = wins;
             opponents = new List<Player_R2>();
             inv = new List<string>();
-            cuffed = 0;
-            lifeCap = _lives;
+            _cuffed = 0;
+            _lifeCap = _lives;
         }
         public override string ToString()
         {
@@ -374,7 +402,7 @@ item - item";
             _wins = wins;
             opponents = new List<Player_R3>();
             inv = new List<string>();
-            cuffed = 0;
+            _cuffed = 0;
             lifeLocked = false;
         }
         public override string ToString()
