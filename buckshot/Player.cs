@@ -203,6 +203,10 @@ type to use:
 shoot - shotgun
 item - item";
         }
+        public void AddOpponent(Player_R2 p)
+        {
+            opponents.Add(p);
+        }
         public void Heal()
         {
             _lives += 1;
@@ -401,6 +405,10 @@ your items: {string.Join(", ", _inv)}
 type to use:
 shoot - shotgun
 item - item";
+        }
+        public void AddOpponent(Player_R3 p)
+        {
+            opponents.Add(p);
         }
         public void UseItem(string item, Shotgun shotgun = null, Player_R3 target = null)
         {
