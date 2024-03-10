@@ -7,6 +7,6 @@ all game files are in buckshot/
 ### current version
 idk yet
 ### old version
-none exist yet but idk too
+i still dont know
 ## license
 this piece of garbage is on the MIT license.
