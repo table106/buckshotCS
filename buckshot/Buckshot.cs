@@ -140,27 +140,27 @@ you cuff your enemy skipping their next turn");
             }
             else if (ans == "actuallytheres3")
             {
-                Console.WriteLine("what does player 1 call themselves?\n>");
-                Player player1 = new Player(1, Console.ReadLine(), 2);
+                Console.WriteLine("what does player 1 call themselves?");
+                Player player1 = new Player(1, Input(">"), 2);
 
-                Console.WriteLine("what about player 2?\n>");
-                Player player2 = new Player(2, Console.ReadLine(), 2);
+                Console.WriteLine("what about player 2?");
+                Player player2 = new Player(2, Input(">"), 2);
 
                 string[] names = { player1.name };
                 while (!Utils.CheckNames(player2.name, names))
                 {
-                    Console.WriteLine("pick another name.\n>");
-                    player2 = new Player(2, Console.ReadLine(), 2);
+                    Console.WriteLine("pick another name.");
+                    player2 = new Player(2, Input(">"), 2);
                 }
 
                 Console.WriteLine("and player 3?");
-                Player player3 = new Player(3, Console.ReadLine(), 2);
+                Player player3 = new Player(3, Input(">"), 2);
 
                 string[] _names = { player1.name, player2.name };
                 while (!Utils.CheckNames(player3.name, _names))
                 {
-                    Console.WriteLine("pick another name.\n>");
-                    player3 = new Player(3, Console.ReadLine(), 2);
+                    Console.WriteLine("pick another name.");
+                    player3 = new Player(3, Input(">"), 2);
                 }
 
                 Utils.InitOpponents(player1, player2, player3);
@@ -193,9 +193,9 @@ you cuff your enemy skipping their next turn");
                 Console.WriteLine("now, when you reach less than 3 lives, your defibrillator will be cut.\nthe life display will glitch when that happens");
                 Thread.Sleep(4000);
 
-                Player_R3 __player1 = new Player_R3(1, player1.name, 6, _player1.Wins);
-                Player_R3 __player2 = new Player_R3(2, player2.name, 6, _player2.Wins);
-                Player_R3 __player3 = new Player_R3(3, player3.name, 6, _player3.Wins);
+                Player_R3 __player1 = new Player_R3(1, _player1.name, 6, _player1.Wins);
+                Player_R3 __player2 = new Player_R3(2, _player2.name, 6, _player2.Wins);
+                Player_R3 __player3 = new Player_R3(3, _player3.name, 6, _player3.Wins);
                 Utils.InitOpponents(__player1, __player2, __player3);
                 Player_R3[] __plrs = { __player1, __player2, __player3 };
                 shotgun.Empty();
@@ -213,11 +213,11 @@ you cuff your enemy skipping their next turn");
             }
             else
             {
-                Console.WriteLine("what does player 1 call themselves?\n>");
-                Player player1 = new Player(1, Console.ReadLine(), 2);
+                Console.WriteLine("what does player 1 call themselves?");
+                Player player1 = new Player(1, Input(">"), 2);
 
                 Console.WriteLine("what about player 2?\n>");
-                Player player2 = new Player(2, Console.ReadLine(), 2);
+                Player player2 = new Player(2, Input(">"), 2);
 
                 Utils.InitOpponents(player1, player2);
                 Player[] plrs = { player1, player2 };
@@ -243,8 +243,8 @@ you cuff your enemy skipping their next turn");
                 Thread.Sleep(4000);
 
                 shotgun.Empty();
-                Player_R3 __player1 = new Player_R3(1, player1.name, 6, _player1.Wins);
-                Player_R3 __player2 = new Player_R3(2, player2.name, 6, _player2.Wins);
+                Player_R3 __player1 = new Player_R3(1, _player1.name, 6, _player1.Wins);
+                Player_R3 __player2 = new Player_R3(2, _player2.name, 6, _player2.Wins);
 
                 Utils.InitOpponents(__player1, __player2);
                 Player_R3[] __plrs = { __player1, __player2 };
@@ -266,7 +266,7 @@ you cuff your enemy skipping their next turn");
             Console.WriteLine("end");
             Thread.Sleep(2);
             Console.WriteLine("engage again?\nyes/no");
-            string ans_ = Console.ReadLine();
+            string ans_ = Input(">");
             if (ans_ == "yes")
             {
                 Main(args);
