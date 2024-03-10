@@ -15,7 +15,7 @@ namespace buckshot
             Console.WriteLine("|| BUCKSHOT ROULETTE ||");
             Console.WriteLine("|| (console version) ||");
             Console.WriteLine("=======================");
-            Console.WriteLine("version c0.1-beta");
+            Console.WriteLine("version c0.2-beta");
             Console.WriteLine(@"press enter to start
 or type 'how' for instructions");
             Shotgun shotgun = new Shotgun();
