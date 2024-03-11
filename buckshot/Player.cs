@@ -31,7 +31,7 @@ namespace buckshot
             get { return _wins; }
             set
             {
-                if (value > 2)
+                if (value > 3)
                 {
                     _wins = 1;
                 } else
